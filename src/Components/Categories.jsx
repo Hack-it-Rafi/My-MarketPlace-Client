@@ -29,7 +29,7 @@ const Categories = () => {
             })
     }
     return (
-        <div className="flex flex-col md:flex-row mt-10 justify-center gap-8 px-5">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row my-10 justify-center gap-8 px-5">
             <div>
                 <Tabs defaultFocus={true}>
                     <div className='flex justify-center'>

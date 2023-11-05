@@ -9,6 +9,8 @@ import {
 import Root from './Components/Root';
 import Home from './Components/Home';
 import JobDetails from './Components/JobDetails';
+import AddJobs from './Components/AddJobs';
+import MyPostedJobs from './Components/MyPostedJobs';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,14 @@ const router = createBrowserRouter([
         path: "/jobDetails/:id",
         element: <JobDetails></JobDetails>,
         loader: ({params})=>fetch(`http://localhost:5000/jobs/${params.id}`)
+      },
+      {
+        path: "/addJobs",
+        element: <AddJobs></AddJobs>
+      },
+      {
+        path: "/myPostedJobs",
+        element: <MyPostedJobs></MyPostedJobs>
       }
     ]
   },
