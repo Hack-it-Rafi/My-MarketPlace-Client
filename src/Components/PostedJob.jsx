@@ -1,11 +1,16 @@
 import { useState } from "react";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import { GrDocumentUpdate } from 'react-icons/gr';
+import { AiFillDelete } from 'react-icons/ai';
+import { useNavigate } from "react-router-dom";
 
 const PostedJob = ({ postedJob }) => {
     const { _id, category, job_title, deadline, img, long_description, maximum_price, minimum_price, short_description} = postedJob;
+
+    const navigate = useNavigate();
     // console.log(product);
     const [state, setState] = useState(true);
-    const handleDeleteProduct = () => {
+    const handleDeleteJob = () => {
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -18,6 +23,7 @@ const PostedJob = ({ postedJob }) => {
             if (result.isConfirmed) {
                 fetch(`http://localhost:5000/myJobs/${_id}`, {
                     method: "DELETE",
+                    credentials: 'include'
                 })
                     .then(res => res.json())
                     .then(() => {
@@ -30,6 +36,10 @@ const PostedJob = ({ postedJob }) => {
 
 
     }
+
+    const handleUpdateJob=()=>{
+        navigate(`/updateJob/${_id}`);
+    }
     // console.log(state);
 
     return (
@@ -41,15 +51,15 @@ const PostedJob = ({ postedJob }) => {
                         <div>
                             <div className="mb-5">
                                 <p className="text-lg font-semibold"><span className="font-sans">{job_title}</span></p>
+                                <p className="text-sm"><span className="font-sans">{category}</span></p>
                                 <p className="text-lg font-semibold"><span className="font-sans">{deadline}</span></p>
                                 <p className="text-lg"><span className="font-sans">${minimum_price} - ${maximum_price}</span></p>
                                 <p className="text-sm"><span className="font-sans">{short_description}</span></p>
                             </div>
                         </div>
                         <div>
-                            <button onClick={handleDeleteProduct} className="btn bg-[#2B3440] text-white hover:border-cyan-800 hover:text-[#2B3440]">X</button><br /><br />
-                            <button onClick={handleDeleteProduct} className="btn bg-red-500 text-white hover:bg-cyan-800 ">X</button>
-
+                            <button onClick={handleUpdateJob} className="btn bg-green-400 text-white hover:bg-cyan-800 hover:text-[#2B3440]"><GrDocumentUpdate></GrDocumentUpdate></button><br /><br />
+                            <button onClick={handleDeleteJob} className="btn bg-red-500 text-white hover:bg-cyan-800 "><AiFillDelete></AiFillDelete></button>
                         </div>
                     </div>
                 </div>

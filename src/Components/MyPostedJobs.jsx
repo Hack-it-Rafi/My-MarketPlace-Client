@@ -1,22 +1,32 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "./Authentication/AuthProvider";
-import axios from "axios";
+// import axios from "axios";
 import PostedJob from "./PostedJob";
+import useAxiosSecure from "./UseAxiosSecure";
 
 const MyPostedJobs = () => {
     const [postedJobs, setPostedJobs] = useState([]);
     const { user } = useContext(AuthContext);
     // console.log(user.email);
-    
+    const axiosSecure = useAxiosSecure();
+    const url = `/myJobs?email=${user.email}`
     useEffect(() => {
-        axios.get(`http://localhost:5000/myJobs?email=${user.email}`)
-            .then(res => {
-                setPostedJobs(res.data);
-            })
-            .catch(error => {
-                console.error("Error fetching data:", error);
-            });
-    }, [user.email]);
+        // axios.get(`http://localhost:5000/myJobs?email=${user.email}`, {withCredentials: true})
+            // .then(res => {
+            //     setPostedJobs(res.data);
+            // })
+            // .catch(error => {
+            //     console.error("Error fetching data:", error);
+            // });
+        axiosSecure.get(url)
+        .then(res => {
+            setPostedJobs(res.data);
+        })
+        .catch(error => {
+            console.error("Error fetching data:", error);
+        });
+
+    }, [url, axiosSecure]);
     // console.log(postedJobs);
     return (
         <div className=" max-w-7xl mx-auto my-10 px-5">

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "./Authentication/AuthProvider";
+import useAxiosSecure from "./UseAxiosSecure";
 
 const JobDetails = () => {
     const data = useLoaderData();
@@ -9,6 +10,9 @@ const JobDetails = () => {
     const { user } = useContext(AuthContext);
     // console.log(user.email);
     const {img, category, job_title, deadline, minimum_price, maximum_price, short_description, long_description, employer_email } = data;
+
+    const axiosSecure = useAxiosSecure();
+    const url = '/bids';
 
     const handleBidRequest=(event)=>{
         event.preventDefault();
@@ -22,7 +26,7 @@ const JobDetails = () => {
         const bid = { img, category, job_title, deadline, minimum_price, maximum_price, short_description, price, bidderDeadline,bidderEmail, ownerEmail, status }
 
         console.log(bid);
-        axios.post('http://localhost:5000/bids', bid)
+        axiosSecure.post(url, bid)
         .then(res=>{
             console.log(res.data);
             form.reset();

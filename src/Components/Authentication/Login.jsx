@@ -2,6 +2,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../../public/login.png"
 import { useContext, useState } from "react";
 import { AuthContext } from "./AuthProvider";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const Login = () => {
 
@@ -20,10 +22,21 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 console.log(result.user);
-                // const myUser = {email};
+                const myUser = {email};
                 setSuccess("Login success")
-                alert("Login success")
-                navigate(location?.state ? location.state : '/');
+                Swal.fire({
+                    title: 'Login Successful!',
+                    text: 'Enjoy Exploring!',
+                    icon: 'success',
+                    confirmButtonText: 'Continue'
+                })
+                axios.post("http://localhost:5000/jwt", myUser, {withCredentials: true})
+                .then(res=>{
+                    console.log(res.data);
+                    if(res.data.success){
+                        navigate(location?.state ? location.state : '/');
+                    }
+                })
 
             })
             .catch(error => {

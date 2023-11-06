@@ -1,6 +1,10 @@
-import axios from "axios";
+// import axios from "axios";
+import useAxiosSecure from "./UseAxiosSecure";
 
 const AddJobs = () => {
+
+    const axiosSecure = useAxiosSecure();
+    const url = '/jobs';
 
     const handleAddJobs=(event)=>{
         event.preventDefault();
@@ -17,7 +21,7 @@ const AddJobs = () => {
 
         const job = {employer_email, job_title, category, deadline, minimum_price, maximum_price, img, short_description, long_description};
 
-        axios.post('http://localhost:5000/jobs', job)
+        axiosSecure.post(url, job)
         .then(res=>{
             console.log(res.data);
         })

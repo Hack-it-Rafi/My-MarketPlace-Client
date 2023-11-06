@@ -1,21 +1,24 @@
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "./Authentication/AuthProvider";
-import axios from "axios";
+// import axios from "axios";
 import MybidsTableRow from "./MybidsTableRow";
+import useAxiosSecure from "./UseAxiosSecure";
 
 const MyBids = () => {
     const [bids, setBids] = useState([]);
     const { user } = useContext(AuthContext);
 
+    const axiosSecure = useAxiosSecure();
+    const url = `/myBids?email=${user.email}`
     useEffect(() => {
-        axios.get(`http://localhost:5000/myBids?email=${user.email}`)
+        axiosSecure.get(url)
             .then(res => {
                 setBids(res.data);
             })
             .catch(error => {
                 console.error("Error fetching data:", error);
             });
-    }, [user.email]);
+    }, [axiosSecure, url]);
 
     // console.log(bids);
     return (
