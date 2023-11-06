@@ -24,6 +24,7 @@ const NavBar = () => {
         <li><Link to='/'>Home</Link></li> 
         <li><Link to='/addJobs'>Add Jobs</Link></li> 
         <li><Link to="/myPostedJobs">My Posted Jobs</Link></li> 
+        <li><Link to="/login">Login</Link></li> 
     </>
 
     return (

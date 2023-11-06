@@ -11,6 +11,9 @@ import Home from './Components/Home';
 import JobDetails from './Components/JobDetails';
 import AddJobs from './Components/AddJobs';
 import MyPostedJobs from './Components/MyPostedJobs';
+import Login from './Components/Authentication/Login';
+import AuthProvider from './Components/Authentication/AuthProvider';
+import Registration from './Components/Authentication/Registration';
 
 const router = createBrowserRouter([
   {
@@ -33,12 +36,20 @@ const router = createBrowserRouter([
       {
         path: "/myPostedJobs",
         element: <MyPostedJobs></MyPostedJobs>
+      },
+      {
+        path: "/login",
+        element: <Login></Login>
+      },
+      {
+        path: "/register",
+        element: <Registration></Registration>
       }
     ]
   },
 ]);
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider><RouterProvider router={router} /></AuthProvider>
   </React.StrictMode>,
 )
