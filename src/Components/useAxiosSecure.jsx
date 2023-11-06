@@ -26,7 +26,7 @@ const useAxiosSecure = () => {
                     .catch(error=>console.log(error));
             }
         })
-    }, [logOut])
+    }, [logOut, navigate])
 
     return axiosSecure;
 };

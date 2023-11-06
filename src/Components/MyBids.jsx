@@ -11,13 +11,23 @@ const MyBids = () => {
     const axiosSecure = useAxiosSecure();
     const url = `/myBids?email=${user.email}`
     useEffect(() => {
+        // axios.get(`http://localhost:5000/myBids?email=${user.email}`, {withCredentials: true})
+            // .then(res => {
+            //     setBids(res.data);
+            //     console.log("Rafiiiiiii");
+            // })
+            // .catch(error => {
+            //     console.error("Error fetching data:", error);
+            // });
         axiosSecure.get(url)
-            .then(res => {
-                setBids(res.data);
-            })
-            .catch(error => {
-                console.error("Error fetching data:", error);
-            });
+        .then(res => {
+            setBids(res.data);
+            console.log("Rafiiiiiii");
+        })
+        .catch(error => {
+            console.error("Error fetching data:", error);
+        });
+
     }, [axiosSecure, url]);
 
     // console.log(bids);

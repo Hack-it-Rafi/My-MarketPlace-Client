@@ -3,11 +3,14 @@ import Swal from 'sweetalert2';
 import { GrDocumentUpdate } from 'react-icons/gr';
 import { AiFillDelete } from 'react-icons/ai';
 import { useNavigate } from "react-router-dom";
+import useAxiosSecure from "./UseAxiosSecure";
 
 const PostedJob = ({ postedJob }) => {
     const { _id, category, job_title, deadline, img, long_description, maximum_price, minimum_price, short_description} = postedJob;
 
     const navigate = useNavigate();
+    const axiosSecure = useAxiosSecure();
+    const url = `/myJobs/${_id}`
     // console.log(product);
     const [state, setState] = useState(true);
     const handleDeleteJob = () => {
@@ -21,13 +24,13 @@ const PostedJob = ({ postedJob }) => {
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/myJobs/${_id}`, {
-                    method: "DELETE",
-                    credentials: 'include'
-                })
+                // fetch(`http://localhost:5000/myJobs/${_id}`, {
+                //     method: "DELETE",
+                //     credentials: 'include'
+                // })
+                axiosSecure.delete(url)
                     .then(res => res.json())
-                    .then(() => {
-                        
+                    .then(() => {                       
                         setState(false);
                     })
                     .catch(error => console.error(error))

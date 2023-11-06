@@ -17,6 +17,7 @@ import Registration from './Components/Authentication/Registration';
 import PrivateRoute from './Components/Authentication/PrivateRoute';
 import MyBids from './Components/MyBids';
 import UpdateJob from './Components/UpdateJob';
+import BidRequests from './Components/BidRequests';
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
       {
         path: "/updateJob/:id",
         element: <PrivateRoute><UpdateJob></UpdateJob></PrivateRoute>
+      },
+      {
+        path: "/bidRequests",
+        element: <PrivateRoute><BidRequests></BidRequests></PrivateRoute>
       }
     ]
   },
