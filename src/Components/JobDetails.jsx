@@ -1,9 +1,13 @@
 import axios from "axios";
+import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "./Authentication/AuthProvider";
 
 const JobDetails = () => {
     const data = useLoaderData();
-    console.log(data);
+    // console.log(data);
+    const { user } = useContext(AuthContext);
+    // console.log(user.email);
     const {img, category, job_title, deadline, minimum_price, maximum_price, short_description, long_description, employer_email } = data;
 
     const handleBidRequest=(event)=>{
@@ -13,9 +17,11 @@ const JobDetails = () => {
         const bidderDeadline = form.deadline.value;
         const bidderEmail = form.bidderEmail.value;
         const ownerEmail = form.ownerEmail.value;
+        const status = "pending";
 
-        const bid = { img, category, job_title, deadline, minimum_price, maximum_price, short_description, price, bidderDeadline,bidderEmail, ownerEmail }
+        const bid = { img, category, job_title, deadline, minimum_price, maximum_price, short_description, price, bidderDeadline,bidderEmail, ownerEmail, status }
 
+        console.log(bid);
         axios.post('http://localhost:5000/bids', bid)
         .then(res=>{
             console.log(res.data);
@@ -70,7 +76,7 @@ const JobDetails = () => {
                                     <label className="label">
                                         <span className="label-text">Your Email</span>
                                     </label>
-                                    <input type="email" required  placeholder="Type here" name="bidderEmail" readOnly value="RafiVaiJoss" className="input input-bordered w-full" />
+                                    <input type="email" required  placeholder="Type here" name="bidderEmail" readOnly value={user.email} className="input input-bordered w-full" />
                                 </div>
                                 <div className="form-control w-full">
                                     <label className="label">

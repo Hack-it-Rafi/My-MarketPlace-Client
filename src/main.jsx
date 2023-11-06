@@ -14,6 +14,9 @@ import MyPostedJobs from './Components/MyPostedJobs';
 import Login from './Components/Authentication/Login';
 import AuthProvider from './Components/Authentication/AuthProvider';
 import Registration from './Components/Authentication/Registration';
+import PrivateRoute from './Components/Authentication/PrivateRoute';
+import MyBids from './Components/MyBids';
+import UpdateJob from './Components/UpdateJob';
 
 const router = createBrowserRouter([
   {
@@ -26,16 +29,16 @@ const router = createBrowserRouter([
       },
       {
         path: "/jobDetails/:id",
-        element: <JobDetails></JobDetails>,
+        element: <PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
         loader: ({params})=>fetch(`http://localhost:5000/jobs/${params.id}`)
       },
       {
         path: "/addJobs",
-        element: <AddJobs></AddJobs>
+        element: <PrivateRoute><AddJobs></AddJobs></PrivateRoute>
       },
       {
         path: "/myPostedJobs",
-        element: <MyPostedJobs></MyPostedJobs>
+        element: <PrivateRoute><MyPostedJobs></MyPostedJobs></PrivateRoute>
       },
       {
         path: "/login",
@@ -44,6 +47,14 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Registration></Registration>
+      },
+      {
+        path: "/myBids",
+        element: <PrivateRoute><MyBids></MyBids></PrivateRoute>
+      },
+      {
+        path: "/updateJob",
+        element: <PrivateRoute><UpdateJob></UpdateJob></PrivateRoute>
       }
     ]
   },

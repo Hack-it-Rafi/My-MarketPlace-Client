@@ -1,9 +1,19 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { AuthContext } from "./Authentication/AuthProvider";
 
 const NavBar = () => {
-    const [scrolling, setScrolling] = useState(false);
+    const location = useLocation();
+    const { user, logOut } = useContext(AuthContext);
 
+    const handleLogOut = () => {
+        logOut()
+            .then()
+            .catch();
+    }
+
+
+    const [scrolling, setScrolling] = useState(false);
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > 0 && !scrolling) {
@@ -23,8 +33,8 @@ const NavBar = () => {
     const navLinks = <>
         <li><Link to='/'>Home</Link></li> 
         <li><Link to='/addJobs'>Add Jobs</Link></li> 
-        <li><Link to="/myPostedJobs">My Posted Jobs</Link></li> 
-        <li><Link to="/login">Login</Link></li> 
+        <li><Link to="/myPostedJobs">My Posted Jobs</Link></li>
+        <li><Link to="/myBids">My Bids</Link></li>
     </>
 
     return (
@@ -48,8 +58,26 @@ const NavBar = () => {
                         {navLinks}
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <a className="btn">Button</a>
+                <div className="navbar-end gap-4">
+                    {location.pathname != "/login" ? (
+                        user ?
+                            <>
+                                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                    <div className="w-10 rounded-full">
+                                        <img src={user?.photoURL} alt="" />
+                                    </div>
+                                </label>
+                                <span>{user?.displayName}</span>
+                                <button onClick={handleLogOut} className="btn z">
+                                    Sign Out
+                                </button>
+                            </>
+                            :
+                            <Link to="/login">
+                                <button className="btn z">Log In</button>
+                            </Link>
+
+                    ) : null}
                 </div>
             </div>
         </div>

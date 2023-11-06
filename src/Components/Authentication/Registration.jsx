@@ -47,9 +47,9 @@ const Registration = () => {
                 setSuccess('User Created Successfully.');
             })
             .catch(error => console.error(error));
-
-
     }
+
+    
     return (
         <div>
             <div className="h-24"></div>
