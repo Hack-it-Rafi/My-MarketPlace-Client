@@ -21,7 +21,7 @@ const UpdateJob = () => {
             setLoadedJobs(res.data);
             console.log(res.data);
         });
-    }, []);
+    }, [axiosSecure, url]);
 
     const handleUpdateJob= (event)=>{
         event.preventDefault();

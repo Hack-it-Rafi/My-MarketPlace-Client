@@ -1,5 +1,8 @@
+import { useState } from "react";
+
 const MybidsTableRow = ({bid}) => {
     // console.log(bid);
+    const [update, setUpdate] = useState('');
     const {img, category, job_title, deadline, minimum_price, maximum_price, short_description, ownerEmail, status } = bid;
     return (
         <tr>
