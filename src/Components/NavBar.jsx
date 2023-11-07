@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "./Authentication/AuthProvider";
+import logo from "../../public/mainLogo2.png";
 
 const NavBar = () => {
     const location = useLocation();
@@ -31,15 +32,15 @@ const NavBar = () => {
     }, [scrolling]);
 
     const navLinks = <>
-        <li><Link to='/'>Home</Link></li> 
-        <li><Link to='/addJobs'>Add Jobs</Link></li> 
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/addJobs'>Add Jobs</Link></li>
         <li><Link to="/myPostedJobs">My Posted Jobs</Link></li>
         <li><Link to="/myBids">My Bids</Link></li>
         <li><Link to="/bidRequests">Bid Requests</Link></li>
     </>
 
     return (
-        <div className={`${scrolling ? 'bg-white' : 'bg-transparent'} fixed px-8 py-4 top-0 left-0 w-full transition-all duration-300`}>
+        <div className={`${scrolling ? 'bg-white' : 'bg-transparent'} fixed px-8 top-0 left-0 w-full transition-all duration-300`}>
             <div className="navbar max-w-7xl mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -52,7 +53,10 @@ const NavBar = () => {
                             }
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                    <div className="flex items-center ">
+                        <img className="w-28" src={logo} alt="" />
+                        <h1 className="text-3xl font-bold bg-gradient-to-r from-orange-400 via-orange-300 to-orange-400 inline-block text-transparent bg-clip-text">KhuJoo</h1>
+                    </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">

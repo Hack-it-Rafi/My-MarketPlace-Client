@@ -31,7 +31,7 @@ const MyPostedJobs = () => {
     return (
         <div className=" max-w-7xl mx-auto my-10 px-5">
             <div className="h-24"></div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap 8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {
                     postedJobs.map(postedJob=><PostedJob key={postedJob._id} postedJob={postedJob}></PostedJob>)
                 }

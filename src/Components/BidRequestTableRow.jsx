@@ -1,5 +1,8 @@
 import { useState } from "react";
 import useAxiosSecure from "./UseAxiosSecure";
+import React from "react";
+import "react-step-progress-bar/styles.css";
+import { ProgressBar, Step } from "react-step-progress-bar";
 const BidRequestTableRow = ({ bid }) => {
     const { img, job_title, price, status, bidderDeadline, bidderEmail, _id } = bid;
     const [updateStatus, setUpdateStatus] = useState(status);
@@ -54,6 +57,7 @@ const BidRequestTableRow = ({ bid }) => {
     console.log(updateStatus);
     return (
         <tr>
+            
             <td>
                 <div className="flex items-center space-x-3">
                     <div className="avatar">
@@ -74,6 +78,7 @@ const BidRequestTableRow = ({ bid }) => {
             </td>
             <td>{price}</td>
             <td>{updateStatus}</td>
+            
             <th>
                 {
                     (updateStatus !== 'In Progress' && updateStatus !== 'Complete') ?
