@@ -1,6 +1,5 @@
 import { useState } from "react";
 import useAxiosSecure from "./UseAxiosSecure";
-
 const BidRequestTableRow = ({ bid }) => {
     const { img, job_title, price, status, bidderDeadline, bidderEmail, _id } = bid;
     const [updateStatus, setUpdateStatus] = useState(status);
@@ -77,13 +76,13 @@ const BidRequestTableRow = ({ bid }) => {
             <td>{updateStatus}</td>
             <th>
                 {
-                    (updateStatus !== 'In Progress'||updateStatus !== 'Complete') ?
+                    (updateStatus !== 'In Progress' && updateStatus !== 'Complete') ?
                         <>
                             <button onClick={handleAccept} disabled={pongoo} className="btn text-white bg-green-600 hover:bg-green-500  mr-3">Accept</button>
                             <button onClick={handleReject} disabled={pongoo} className="btn text-white bg-red-600 hover:bg-red-500">Reject</button>
-                        </>:
+                        </> :
                         <>
-                            
+
                         </>
                 }
             </th>

@@ -1,9 +1,32 @@
 import { useState } from "react";
+import useAxiosSecure from "./UseAxiosSecure";
 
 const MybidsTableRow = ({bid}) => {
     // console.log(bid);
-    const [update, setUpdate] = useState('');
-    const {img, category, job_title, deadline, minimum_price, maximum_price, short_description, ownerEmail, status } = bid;
+    
+    const {_id, img, category, job_title, deadline, minimum_price, maximum_price, short_description, ownerEmail, status } = bid;
+
+    const [updateStatus, setUpdateStatus] = useState(status);
+
+    const axiosSecure = useAxiosSecure();
+    const url = `/myBids/${_id}`
+    const handleUpdate = ()=>{
+        const stat = { status: 'Complete' }
+        console.log(stat);
+        axiosSecure.patch(url, stat)
+            .then(res => {
+                console.log(res.data);
+                if (res.data.modifiedCount > 0) {
+                    setUpdateStatus('Complete');
+                    // setPongoo(false);
+                }
+                else {
+                    setUpdateStatus(status);
+                    // setPongoo(false);
+                }
+            })
+            .catch(error => console.error(error))
+    }
     return (
         <tr>
             <td>
@@ -24,9 +47,14 @@ const MybidsTableRow = ({bid}) => {
             <td>
                 {deadline}
             </td>
-            <td>{status}</td>
+            <td>{updateStatus}</td>
             <th>
-                <button className="btn btn-ghost btn-xs">details</button>
+                {
+                    (updateStatus === 'In Progress')?
+                    <button onClick={handleUpdate} className="btn bg-green-600 hover:bg-green-400">Complete</button>
+                    :
+                    <></>
+                }
             </th>
         </tr>
     );
