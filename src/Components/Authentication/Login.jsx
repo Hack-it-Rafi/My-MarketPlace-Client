@@ -23,8 +23,9 @@ const Login = () => {
 
         signIn(email, password)
             .then(result => {
-                console.log(result.user);
+                console.log(result.user.email);
                 const myUser = { email };
+                console.log(myUser);
                 setSuccess("Login success")
                 Swal.fire({
                     title: 'Login Successful!',
@@ -50,8 +51,9 @@ const Login = () => {
     const handleGoogleSignIn = ()=>{
         googleSignIn()
         .then(result => {
-            console.log(result.user);
-            const myUser = { email };
+            console.log(result.user.email);
+            const mail = result.user.email;
+            const myUser = { mail };
             setSuccess("Login success")
             Swal.fire({
                 title: 'Login Successful!',

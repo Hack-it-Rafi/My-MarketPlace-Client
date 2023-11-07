@@ -1,8 +1,9 @@
 // import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import useAxiosSecure from "./UseAxiosSecure";
 
 const AddJobs = () => {
-
+    const navigate = useNavigate();
     const axiosSecure = useAxiosSecure();
     const url = '/jobs';
 
@@ -24,6 +25,7 @@ const AddJobs = () => {
         axiosSecure.post(url, job)
         .then(res=>{
             console.log(res.data);
+            navigate('/myPostedJobs');
         })
     }
     return (

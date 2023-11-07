@@ -5,8 +5,8 @@ import { AiFillDelete } from 'react-icons/ai';
 import { useNavigate } from "react-router-dom";
 import useAxiosSecure from "./UseAxiosSecure";
 
-const PostedJob = ({ postedJob }) => {
-    const { _id, category, job_title, deadline, img, long_description, maximum_price, minimum_price, short_description } = postedJob;
+const PostedJob = ({ postedJob, setPostedJobs }) => {
+    const { _id, category, job_title, deadline, img, maximum_price, minimum_price, short_description } = postedJob;
 
     const navigate = useNavigate();
     const axiosSecure = useAxiosSecure();
@@ -29,8 +29,8 @@ const PostedJob = ({ postedJob }) => {
                 //     credentials: 'include'
                 // })
                 axiosSecure.delete(url)
-                    .then(res => res.json())
-                    .then(() => {
+                    .then(res => {
+                        console.log(res.data);
                         setState(false);
                     })
                     .catch(error => console.error(error))

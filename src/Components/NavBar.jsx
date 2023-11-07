@@ -53,7 +53,7 @@ const NavBar = () => {
                             }
                         </ul>
                     </div>
-                    <div className="flex items-center ">
+                    <div className="hidden md:flex items-center ">
                         <img className="w-28" src={logo} alt="" />
                         <h1 className="text-3xl font-bold bg-gradient-to-r from-orange-400 via-orange-300 to-orange-400 inline-block text-transparent bg-clip-text">KhuJoo</h1>
                     </div>
