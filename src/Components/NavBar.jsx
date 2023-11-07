@@ -32,11 +32,11 @@ const NavBar = () => {
     }, [scrolling]);
 
     const navLinks = <>
-        <li><Link to='/'>Home</Link></li>
-        <li><Link to='/addJobs'>Add Jobs</Link></li>
-        <li><Link to="/myPostedJobs">My Posted Jobs</Link></li>
-        <li><Link to="/myBids">My Bids</Link></li>
-        <li><Link to="/bidRequests">Bid Requests</Link></li>
+        <li className="mr-1"><Link to='/'>Home</Link></li>
+        <li className="mr-1"><Link to='/addJobs'>Add Jobs</Link></li>
+        <li className="mr-1"><Link to="/myPostedJobs">My Posted Jobs</Link></li>
+        <li className="mr-1"><Link to="/myBids">My Bids</Link></li>
+        <li className=""><Link to="/bidRequests">Bid Requests</Link></li>
     </>
 
     return (

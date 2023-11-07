@@ -18,11 +18,13 @@ import PrivateRoute from './Components/Authentication/PrivateRoute';
 import MyBids from './Components/MyBids';
 import UpdateJob from './Components/UpdateJob';
 import BidRequests from './Components/BidRequests';
+import ErrorPage from './ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <ErrorPage></ErrorPage>,
     children:[
       {
         path: "/",

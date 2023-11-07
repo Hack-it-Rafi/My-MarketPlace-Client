@@ -4,10 +4,12 @@ import { useContext, useState } from "react";
 import { AuthContext } from "./AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { FcGoogle } from 'react-icons/fc';
 
 const Login = () => {
 
     const [success, setSuccess] = useState('');
+    // const [myMail, setMyMail] = useState('');
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -22,7 +24,7 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 console.log(result.user);
-                const myUser = {email};
+                const myUser = { email };
                 setSuccess("Login success")
                 Swal.fire({
                     title: 'Login Successful!',
@@ -30,19 +32,46 @@ const Login = () => {
                     icon: 'success',
                     confirmButtonText: 'Continue'
                 })
-                axios.post("http://localhost:5000/jwt", myUser, {withCredentials: true})
-                .then(res=>{
-                    console.log(res.data);
-                    if(res.data.success){
-                        navigate(location?.state ? location.state : '/');
-                    }
-                })
+                axios.post("http://localhost:5000/jwt", myUser, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data);
+                        if (res.data.success) {
+                            navigate(location?.state ? location.state : '/');
+                        }
+                    })
 
             })
             .catch(error => {
                 console.error(error);
                 setSuccess(error.message);
             })
+    }
+
+    const handleGoogleSignIn = ()=>{
+        googleSignIn()
+        .then(result => {
+            console.log(result.user);
+            const myUser = { email };
+            setSuccess("Login success")
+            Swal.fire({
+                title: 'Login Successful!',
+                text: 'Enjoy Exploring!',
+                icon: 'success',
+                confirmButtonText: 'Continue'
+            })
+            axios.post("http://localhost:5000/jwt", myUser, { withCredentials: true })
+                .then(res => {
+                    console.log(res.data);
+                    if (res.data.success) {
+                        navigate(location?.state ? location.state : '/');
+                    }
+                })
+
+        })
+        .catch(error => {
+            console.error(error);
+            setSuccess(error.message);
+        })
     }
     return (
         <div>
@@ -52,7 +81,7 @@ const Login = () => {
                     <div className="text-center flex justify-center w-1/2 lg:text-left">
                         <img className="w-2/3" src={logo} alt="" />
                     </div>
-                    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                    <div className="card flex-shrink-0 w-full  max-w-sm shadow-2xl bg-base-100">
                         <form className="card-body" onSubmit={handleLogin}>
                             <div className="form-control">
                                 <label className="label">
@@ -76,7 +105,13 @@ const Login = () => {
                             </div>
                         </form>
 
-                        <p className="my-4 text-center">Do not have an account? <Link className="text-blue-600" to="/register">Register</Link></p>
+                        <div className="mx-auto text-center">
+                            <p className="pb-2">or,</p>
+                            <button onClick={handleGoogleSignIn} className="flex gap-2 btn"><FcGoogle />
+                                Google</button>
+                        </div>
+
+                        <p className="mb-8 mt-2 text-center">Do not have an account? <Link className="text-blue-600" to="/register">Register</Link></p>
                     </div>
                 </div>
             </div>
