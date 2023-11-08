@@ -7,7 +7,7 @@ const AddJobs = () => {
     const axiosSecure = useAxiosSecure();
     const url = '/jobs';
 
-    const handleAddJobs=(event)=>{
+    const handleAddJobs = (event) => {
         event.preventDefault();
         const form = event.target;
         const employer_email = form.email.value;
@@ -20,13 +20,13 @@ const AddJobs = () => {
         const short_description = form.shortDescription.value;
         const long_description = form.longDescription.value;
 
-        const job = {employer_email, job_title, category, deadline, minimum_price, maximum_price, img, short_description, long_description};
+        const job = { employer_email, job_title, category, deadline, minimum_price, maximum_price, img, short_description, long_description };
 
         axiosSecure.post(url, job)
-        .then(res=>{
-            console.log(res.data);
-            navigate('/myPostedJobs');
-        })
+            .then(res => {
+                console.log(res.data);
+                navigate('/myPostedJobs');
+            })
     }
     return (
         <div className="max-w-7xl mx-auto">
@@ -58,7 +58,12 @@ const AddJobs = () => {
                                     <label className="label">
                                         <span className="label-text">Job Category</span>
                                     </label>
-                                    <input type="text" required placeholder="Type here" name="category" className="input input-bordered w-full" />
+                                    <select required name="category" className="select select-bordered w-full ">
+                                        <option disabled selected>Select Category</option>
+                                        <option>Web Development</option>
+                                        <option>Digital Marketing</option>
+                                        <option>Graphics Design</option>
+                                    </select>
                                 </div>
                                 <div className="form-control w-full">
                                     <label className="label">

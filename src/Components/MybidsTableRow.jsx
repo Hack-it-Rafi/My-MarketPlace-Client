@@ -51,7 +51,7 @@ const MybidsTableRow = ({bid}) => {
             <th>
                 {
                     (updateStatus === 'In Progress')?
-                    <button onClick={handleUpdate} className="btn bg-green-600 hover:bg-green-400">Complete</button>
+                    <button onClick={handleUpdate} className="btn bg-green-600 hover:bg-green-400 text-white">Complete</button>
                     :
                     <></>
                 }

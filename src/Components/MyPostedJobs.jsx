@@ -33,7 +33,7 @@ const MyPostedJobs = () => {
             <div className="h-24"></div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {
-                    postedJobs.map(postedJob=><PostedJob key={postedJob._id} postedJob={postedJob}></PostedJob>)
+                    postedJobs.map(postedJob=><PostedJob key={postedJob._id} postedJob={postedJob} setPostedJobs={setPostedJobs}></PostedJob>)
                 }
             </div>
         </div>
