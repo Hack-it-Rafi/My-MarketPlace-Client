@@ -78,7 +78,7 @@ const BidRequestTableRow = ({ bid }) => {
             <td>{price}</td>
             <td>{updateStatus}</td>
             
-            <th>
+            <td>
                 {
                     (updateStatus !== 'In Progress' && updateStatus !== 'Complete') ?
                         <>
@@ -100,7 +100,7 @@ const BidRequestTableRow = ({ bid }) => {
                             }
                         </>
                 }
-            </th>
+            </td>
         </tr>
     );
 };

@@ -38,7 +38,7 @@ const BidRequests = () => {
                             <th>Bidder DeadLine</th>
                             <th>Price</th>
                             <th>Status</th>
-                            <th></th>
+                            <th>Progress</th>
                         </tr>
                     </thead>
                     <tbody>
