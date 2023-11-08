@@ -4,8 +4,10 @@ import { GrDocumentUpdate } from 'react-icons/gr';
 import { AiFillDelete } from 'react-icons/ai';
 import { useNavigate } from "react-router-dom";
 import useAxiosSecure from "./UseAxiosSecure";
+import { motion } from "framer-motion";
 
-const PostedJob = ({ postedJob, setPostedJobs }) => {
+
+const PostedJob = ({ postedJob }) => {
     const { _id, category, job_title, deadline, img, maximum_price, minimum_price, short_description } = postedJob;
 
     const navigate = useNavigate();
@@ -46,7 +48,8 @@ const PostedJob = ({ postedJob, setPostedJobs }) => {
     // console.log(state);
 
     return (
-        <div>
+        <motion.div whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}>
             {state &&
                 <div className="w-full h-36 bg-slate-100 rounded-lg flex justify-center items-center">
                     <div className="flex  justify-around items-center w-full">
@@ -70,7 +73,7 @@ const PostedJob = ({ postedJob, setPostedJobs }) => {
                     </div>
                 </div>
             }
-        </div>
+        </motion.div>
     );
 };
 

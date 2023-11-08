@@ -15,6 +15,16 @@ const JobDetails = () => {
     // console.log(user.email);
     const { img, category, job_title, deadline, minimum_price, maximum_price, short_description, long_description, employer_email } = data;
 
+    console.log(deadline);
+
+    const getTodayDate = () => {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed, so add 1
+        const day = String(today.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    };
+
     const axiosSecure = useAxiosSecure();
     const url = '/bids';
 
@@ -41,7 +51,7 @@ const JobDetails = () => {
 
         const bid = { img, category, job_title, deadline, minimum_price, maximum_price, short_description, price, bidderDeadline, bidderEmail, ownerEmail, status }
 
-        console.log(bid);
+        // console.log(bid);
         axiosSecure.post(url, bid)
             .then(res => {
                 console.log(res.data);
@@ -97,9 +107,16 @@ const JobDetails = () => {
                                 </div>
                                 <div className="form-control w-full">
                                     <label className="label">
-                                        <span className="label-text">DeadLine</span>
+                                        <span className="label-text">Dead Line</span>
                                     </label>
-                                    <input type="date" required placeholder="Type here" name="deadline" className="input input-bordered w-full" />
+                                    <input
+                                        type="date"
+                                        required
+                                        placeholder="Type here"
+                                        name="deadLine"
+                                        className="input input-bordered w-full"
+                                        min={getTodayDate()}
+                                    />
                                 </div>
                             </div>
                             <div className="flex gap-4 md:gap-10">

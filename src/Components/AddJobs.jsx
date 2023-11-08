@@ -85,12 +85,6 @@ const AddJobs = () => {
                                         <option>Graphics Design</option>
                                     </select>
                                 </div>
-                                {/* <div className="form-control w-full">
-                                    <label className="label">
-                                        <span className="label-text">Dead Line</span>
-                                    </label>
-                                    <input type="date" required placeholder="Type here" name="deadLine" className="input input-bordered w-full" />
-                                </div> */}
                                 <div className="form-control w-full">
                                     <label className="label">
                                         <span className="label-text">Dead Line</span>
@@ -101,7 +95,7 @@ const AddJobs = () => {
                                         placeholder="Type here"
                                         name="deadLine"
                                         className="input input-bordered w-full"
-                                        min={getTodayDate()} // Set the minimum date to today
+                                        min={getTodayDate()}
                                     />
                                 </div>
                             </div>
