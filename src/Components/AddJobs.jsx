@@ -1,11 +1,22 @@
 // import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import useAxiosSecure from "./UseAxiosSecure";
+import { useContext } from "react";
+import { AuthContext } from "./Authentication/AuthProvider";
 
 const AddJobs = () => {
+    const { user } = useContext(AuthContext);
     const navigate = useNavigate();
     const axiosSecure = useAxiosSecure();
     const url = '/jobs';
+
+    const getTodayDate = () => {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed, so add 1
+        const day = String(today.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    };
 
     const handleAddJobs = (event) => {
         event.preventDefault();
@@ -44,7 +55,7 @@ const AddJobs = () => {
                                     <label className="label">
                                         <span className="label-text">Your Email</span>
                                     </label>
-                                    <input type="email" required placeholder="Type here" name="email" className="input input-bordered w-full" />
+                                    <input type="email" defaultValue={user?.email} readOnly required placeholder="Type here" name="email" className="input input-bordered w-full" />
                                 </div>
                                 <div className="form-control w-full">
                                     <label className="label">
@@ -65,11 +76,24 @@ const AddJobs = () => {
                                         <option>Graphics Design</option>
                                     </select>
                                 </div>
-                                <div className="form-control w-full">
+                                {/* <div className="form-control w-full">
                                     <label className="label">
                                         <span className="label-text">Dead Line</span>
                                     </label>
                                     <input type="date" required placeholder="Type here" name="deadLine" className="input input-bordered w-full" />
+                                </div> */}
+                                <div className="form-control w-full">
+                                    <label className="label">
+                                        <span className="label-text">Dead Line</span>
+                                    </label>
+                                    <input
+                                        type="date"
+                                        required
+                                        placeholder="Type here"
+                                        name="deadLine"
+                                        className="input input-bordered w-full"
+                                        min={getTodayDate()} // Set the minimum date to today
+                                    />
                                 </div>
                             </div>
                             <div className="flex gap-4 md:gap-10">

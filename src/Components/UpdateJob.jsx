@@ -56,8 +56,8 @@ const UpdateJob = () => {
 
     }
     return (
-        <div>
-            <div className="bg-slate-100 rounded-lg">
+        <div className="max-w-7xl mx-auto">
+            <div className="bg-slate-100 rounded-lg mt-16">
                 <div className="text-center py-20">
                     <h2 className="font-Young text-4xl">Update Job</h2>
                     <p></p>

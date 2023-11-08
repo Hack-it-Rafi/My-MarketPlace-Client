@@ -24,7 +24,7 @@ const PostedJob = ({ postedJob, setPostedJobs }) => {
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                // fetch(`http://localhost:5000/myJobs/${_id}`, {
+                // fetch(`https://my-market-place-server.vercel.app/myJobs/${_id}`, {
                 //     method: "DELETE",
                 //     credentials: 'include'
                 // })

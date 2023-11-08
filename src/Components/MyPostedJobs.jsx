@@ -11,7 +11,7 @@ const MyPostedJobs = () => {
     const axiosSecure = useAxiosSecure();
     const url = `/myJobs?email=${user.email}`
     useEffect(() => {
-        // axios.get(`http://localhost:5000/myJobs?email=${user.email}`, {withCredentials: true})
+        // axios.get(`https://my-market-place-server.vercel.app/myJobs?email=${user.email}`, {withCredentials: true})
             // .then(res => {
             //     setPostedJobs(res.data);
             // })

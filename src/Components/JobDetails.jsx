@@ -64,7 +64,7 @@ const JobDetails = () => {
     return (
         <div className="max-w-7xl mx-auto px-5">
             <div className="h-24"></div>
-            <div className="flex flex-col md:flex-row items-center">
+            <div className="flex flex-col md:flex-row items-center mt-16">
                 <div className="md:w-1/2">
                     <img className="rounded-lg" src={img} alt="" />
                 </div>

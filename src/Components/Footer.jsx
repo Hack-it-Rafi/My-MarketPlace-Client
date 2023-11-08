@@ -6,7 +6,7 @@ const Footer = () => {
                 <aside>
                     <img className="w-28" src={logo} alt="" />
                     <p className="font-bold">
-                        <span className="text-lg font-bold bg-gradient-to-r from-orange-400 via-orange-300 to-orange-400 inline-block text-transparent bg-clip-text">KhuJoo International Ltd.</span> <br />Final Exam Ongoing. Could not spend much time on UI.
+                        <span className="text-lg font-bold bg-gradient-to-r from-orange-400 via-orange-300 to-orange-400 inline-block text-transparent bg-clip-text">KhuJoo International Ltd</span> <br />Final Exam Ongoing. Could not spend much time on UI.
                     </p>
                     <p>Copyright © 2023 - All right reserved</p>
                 </aside>

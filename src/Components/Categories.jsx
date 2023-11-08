@@ -8,21 +8,21 @@ const Categories = () => {
     const [jobs, setJobs] = useState([]);
 
     const handleWebJobs = () => {
-        axios.get("http://localhost:5000/categoryJobs?category=Web%20Development")
+        axios.get("https://my-market-place-server.vercel.app/categoryJobs?category=Web%20Development")
             .then(res => {
                 console.log(res.data);
                 setJobs(res.data);
             })
     }
     const handleMarketingJobs = () => {
-        axios.get("http://localhost:5000/categoryJobs?category=Digital%20Marketing")
+        axios.get("https://my-market-place-server.vercel.app/categoryJobs?category=Digital%20Marketing")
             .then(res => {
                 console.log(res.data);
                 setJobs(res.data);
             })
     }
     const handleGraphicsJobs = () => {
-        axios.get("http://localhost:5000/categoryJobs?category=Graphics%20Design")
+        axios.get("https://my-market-place-server.vercel.app/categoryJobs?category=Graphics%20Design")
             .then(res => {
                 console.log(res.data);
                 setJobs(res.data);

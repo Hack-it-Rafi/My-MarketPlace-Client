@@ -11,7 +11,7 @@ const MyBids = () => {
     const axiosSecure = useAxiosSecure();
     const url = `/myBids?email=${user.email}`
     useEffect(() => {
-        // axios.get(`http://localhost:5000/myBids?email=${user.email}`, {withCredentials: true})
+        // axios.get(`https://my-market-place-server.vercel.app/myBids?email=${user.email}`, {withCredentials: true})
             // .then(res => {
             //     setBids(res.data);
             //     console.log("Rafiiiiiii");
