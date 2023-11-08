@@ -3,11 +3,14 @@ import { useNavigate } from "react-router-dom";
 import useAxiosSecure from "./UseAxiosSecure";
 import { useContext } from "react";
 import { AuthContext } from "./Authentication/AuthProvider";
+import Swal from "sweetalert2";
+import useTitle from "../useTitle";
 
 const AddJobs = () => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
     const axiosSecure = useAxiosSecure();
+    useTitle('Add Job');
     const url = '/jobs';
 
     const getTodayDate = () => {
@@ -36,6 +39,12 @@ const AddJobs = () => {
         axiosSecure.post(url, job)
             .then(res => {
                 console.log(res.data);
+                Swal.fire({
+                    title: 'Login Successful!',
+                    text: 'Enjoy Exploring!',
+                    icon: 'success',
+                    confirmButtonText: 'Continue'
+                })
                 navigate('/myPostedJobs');
             })
     }

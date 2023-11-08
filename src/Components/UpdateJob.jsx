@@ -4,11 +4,13 @@ import { AuthContext } from "./Authentication/AuthProvider";
 // import axios from "axios";
 import Swal from 'sweetalert2';
 import useAxiosSecure from "./UseAxiosSecure";
+import useTitle from "../useTitle";
 
 const UpdateJob = () => {
     const {user} = useContext(AuthContext);
     const id = useParams();
     const navigate = useNavigate();
+    useTitle('Update');
     // console.log(id.id);
 
     const [loadedJobs, setLoadedJobs] = useState([]);

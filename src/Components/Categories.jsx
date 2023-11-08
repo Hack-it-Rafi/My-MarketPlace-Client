@@ -34,9 +34,9 @@ const Categories = () => {
                 <Tabs defaultFocus={true}>
                     <div className='flex justify-center'>
                     <TabList>
-                        <Tab onFocus={handleWebJobs}><h1 className='text-xl bg-gradient-to-r from-orange-900 via-orange-500 to-orange-400 inline-block text-transparent bg-clip-text'>Web Development</h1></Tab>
-                        <Tab onFocus={handleMarketingJobs}><h1 className='text-xl bg-gradient-to-r from-orange-400 via-orange-300 to-orange-400 inline-block text-transparent bg-clip-text'>Digital Marketing</h1></Tab>
-                        <Tab onFocus={handleGraphicsJobs}><h1 className='text-xl bg-gradient-to-r from-orange-400 via-orange-500 to-orange-900 inline-block text-transparent bg-clip-text'>Graphics Design</h1></Tab>
+                        <Tab onFocus={handleWebJobs}><h1 className='text-xs md:text-xl bg-gradient-to-r from-orange-900 via-orange-500 to-orange-400 inline-block text-transparent bg-clip-text'>Web Development</h1></Tab>
+                        <Tab onFocus={handleMarketingJobs}><h1 className='text-xs md:text-xl bg-gradient-to-r from-orange-400 via-orange-300 to-orange-400 inline-block text-transparent bg-clip-text'>Digital Marketing</h1></Tab>
+                        <Tab onFocus={handleGraphicsJobs}><h1 className='text-xs md:text-xl bg-gradient-to-r from-orange-400 via-orange-500 to-orange-900 inline-block text-transparent bg-clip-text'>Graphics Design</h1></Tab>
                     </TabList>
                     </div>
                     <div className='my-10'>

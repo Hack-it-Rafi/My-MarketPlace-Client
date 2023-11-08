@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 const JobCard = ({job}) => {
     const navigate = useNavigate();
-    const {img, category, job_title, deadline, minimum_price, maximum_price, short_description, long_description} = job;
+    const {img,job_title, deadline, minimum_price, maximum_price, short_description} = job;
 
     const handleJobDetails=()=>{
         console.log(job._id);
@@ -11,11 +11,15 @@ const JobCard = ({job}) => {
 
     return (
         <div className="flex flex-wrap">
-            <div className="card card-compact bg-base-100 shadow-xl">
+            <div className="card w-full card-compact bg-base-100 shadow-xl">
                 <figure><img className="h-44 rounded-lg" src={img} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{job_title}</h2>
-                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                    <div className="w-full flex justify-between">
+                        <p>{deadline}</p>
+                        <p><small>${minimum_price} - ${maximum_price}</small></p>
+                    </div>
+                    <p className="text-justify">{short_description}</p>
                     <div className="card-actions justify-end">
                         <button onClick={handleJobDetails} className="btn btn-primary">Bid Now</button>
                     </div>

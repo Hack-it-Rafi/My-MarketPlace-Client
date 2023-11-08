@@ -2,12 +2,15 @@ import { useContext, useState } from "react";
 import logo from "../../../public/login.png"
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
+import Swal from "sweetalert2";
+import useTitle from "../../useTitle";
 
 const Registration = () => {
     const [registerError, setRegisterError] = useState('');
     const [success, setSuccess] = useState('');
 
     const navigate = useNavigate();
+    useTitle('Register');
     const { createUser, updateUser } = useContext(AuthContext);
 
     const handleRegister = (e) => {
@@ -37,9 +40,15 @@ const Registration = () => {
         createUser(email, password)
             .then(result => {
                 console.log(result.user);
-                alert("User created")
                 updateUser(name, photo)
-                    .then(() => console.log("hello"))
+                    .then(() => {
+                        Swal.fire({
+                            title: 'User Created',
+                            text: 'Enjoy Exploring!',
+                            icon: 'success',
+                            confirmButtonText: 'Continue'
+                        })
+                    })
                     .catch(error => {
                         setRegisterError(error.code);
                     });
@@ -49,7 +58,7 @@ const Registration = () => {
             .catch(error => console.error(error));
     }
 
-    
+
     return (
         <div>
             <div className="h-24"></div>

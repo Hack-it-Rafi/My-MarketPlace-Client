@@ -5,6 +5,7 @@ import { AuthContext } from "./AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { FcGoogle } from 'react-icons/fc';
+import useTitle from "../../useTitle";
 
 const Login = () => {
 
@@ -13,6 +14,7 @@ const Login = () => {
 
     const location = useLocation();
     const navigate = useNavigate();
+    useTitle('Login');
 
     const { signIn, googleSignIn } = useContext(AuthContext);
 

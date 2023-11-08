@@ -4,10 +4,12 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "./Authentication/AuthProvider";
 import useAxiosSecure from "./UseAxiosSecure";
 import Swal from "sweetalert2";
+import useTitle from "../useTitle";
 
 const JobDetails = () => {
     const data = useLoaderData();
     const navigate = useNavigate();
+    useTitle('Job Details');
     // console.log(data);
     const { user } = useContext(AuthContext);
     // console.log(user.email);

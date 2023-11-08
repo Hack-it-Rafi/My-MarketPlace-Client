@@ -40,7 +40,7 @@ const NavBar = () => {
     </>
 
     return (
-        <div className={`${scrolling ? 'bg-white' : 'bg-transparent'} fixed px-8 top-0 left-0 w-full transition-all duration-300`}>
+        <div className={`${scrolling ? 'bg-white' : 'bg-transparent'} md:fixed px-8 top-0 left-0 w-full transition-all duration-300`}>
             <div className="navbar max-w-7xl mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">

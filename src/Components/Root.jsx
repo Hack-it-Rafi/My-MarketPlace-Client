@@ -1,11 +1,13 @@
 import { Outlet } from "react-router-dom";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
+import Header from "./Header";
 
 const Root = () => {
     return (
         <div>
-            <div className="max-w-7xl mx-auto sticky z-10">
+            <Header></Header>
+            <div className="max-w-7xl mx-auto md:sticky z-10">
                 <NavBar></NavBar>
             </div>
                 <Outlet></Outlet>
