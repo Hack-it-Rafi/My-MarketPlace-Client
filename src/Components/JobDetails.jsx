@@ -12,10 +12,11 @@ const JobDetails = () => {
     useTitle('Job Details');
     // console.log(data);
     const { user } = useContext(AuthContext);
+    let dateCondition = true;
     // console.log(user.email);
     const { img, category, job_title, deadline, minimum_price, maximum_price, short_description, long_description, employer_email } = data;
 
-    console.log(deadline);
+    console.log(deadline); //deadline value format: 2023-11-30
 
     const getTodayDate = () => {
         const today = new Date();
@@ -25,6 +26,20 @@ const JobDetails = () => {
         return `${year}-${month}-${day}`;
     };
 
+    // const jobDeadline = new Date(deadline); // Convert the job's deadline to a Date object
+    // const todayDate = new Date(getTodayDate()); // Convert today's date to a Date object
+
+    // const isDeadlinePassed = jobDeadline < todayDate;
+
+    // if (isDeadlinePassed) {
+    //     // The deadline has passed
+    //     dateCondition = false;
+    // } else {
+    //     dateCondition = true;
+    // }
+
+
+
     const axiosSecure = useAxiosSecure();
     const url = '/bids';
 
@@ -33,12 +48,12 @@ const JobDetails = () => {
         // toast("Your Bid is Placed");
         const form = event.target;
         const price = form.price.value;
-        const bidderDeadline = form.deadline.value;
+        const bidderDeadline = form.deadLine.value;
         const bidderEmail = form.bidderEmail.value;
         const ownerEmail = form.ownerEmail.value;
         const status = "pending";
 
-        if(bidderEmail===ownerEmail){
+        if (bidderEmail === ownerEmail) {
             Swal.fire({
                 title: 'You Can not Bid on Your Own Job',
                 text: 'Something went wrong!',
@@ -62,9 +77,9 @@ const JobDetails = () => {
                         icon: 'success',
                         confirmButtonText: 'Continue'
                     })
-                    
+
                     navigate('/myBids');
-                    
+
                 }
                 form.reset();
             })
@@ -136,10 +151,11 @@ const JobDetails = () => {
 
 
                             {/* Submit */}
-                            <div className="form-control mt-6">
-                                <button className="btn bg-orange-800 text-white hover:bg-orange-700">Bid on the Project</button>
-                                
-                            </div>
+                            {dateCondition &&
+                                <div className="form-control mt-6">
+                                    <button className="btn bg-orange-800 text-white hover:bg-orange-700">Bid on the Project</button>
+
+                                </div>}
                         </form>
                     </div>
                 </div>

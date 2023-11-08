@@ -49,16 +49,18 @@ const PostedJob = ({ postedJob }) => {
 
     return (
         <motion.div whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}>
+            whileTap={{ scale: 0.9 }}>
             {state &&
-                <div className="w-full h-36 bg-slate-100 rounded-lg flex justify-center items-center">
+                <div className="w-full h-36 bg-slate-100 rounded-lg flex justify-center gap-5 items-center">
                     <div className="flex  justify-around items-center w-full">
-                        <div>
-                        <img className="w-[80px]" src={img} alt="hero" />
-                        <p className="text-lg font-semibold"><span className="font-sans">{job_title}</span></p>
-                        <p className="text-sm"><span className="font-sans">{category}</span></p>
+                        <div className="w-[30%] flex justify-end">
+                            <div className="text-center">
+                            <img className="w-[80px] mx-auto" src={img} alt="hero" />
+                            <p className="text-lg font-semibold"><span className="font-sans">{job_title}</span></p>
+                            <p className="text-sm"><span className="font-sans">{category}</span></p>
+                            </div>
                         </div>
-                        <div>
+                        <div className="w-[50%]">
                             <div className="mb-5">
 
                                 <p className="text-lg font-semibold"><span className="font-sans">{deadline}</span></p>
@@ -66,9 +68,11 @@ const PostedJob = ({ postedJob }) => {
                                 <p className="text-sm"><span className="font-sans">{short_description}</span></p>
                             </div>
                         </div>
-                        <div>
-                            <button onClick={handleUpdateJob} className="btn bg-green-400 text-white hover:bg-cyan-800 hover:text-[#2B3440]"><GrDocumentUpdate></GrDocumentUpdate></button><br /><br />
-                            <button onClick={handleDeleteJob} className="btn bg-red-500 text-white hover:bg-cyan-800 "><AiFillDelete></AiFillDelete></button>
+                        <div className="w-[15%] flex justify-center">
+                            <div>
+                                <button onClick={handleUpdateJob} className="btn bg-green-400 text-white hover:bg-cyan-800 hover:text-[#2B3440]"><GrDocumentUpdate></GrDocumentUpdate></button><br /><br />
+                                <button onClick={handleDeleteJob} className="btn bg-red-500 text-white hover:bg-cyan-800 "><AiFillDelete></AiFillDelete></button>
+                            </div>
                         </div>
                     </div>
                 </div>

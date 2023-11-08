@@ -1,6 +1,5 @@
 import { useState } from "react";
 import useAxiosSecure from "./UseAxiosSecure";
-import React from "react";
 import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
 const BidRequestTableRow = ({ bid }) => {
@@ -87,7 +86,18 @@ const BidRequestTableRow = ({ bid }) => {
                             <button onClick={handleReject} disabled={pongoo} className="btn text-white bg-red-600 hover:bg-red-500">Reject</button>
                         </> :
                         <>
-
+                            {updateStatus=== 'In Progress'&&
+                                <ProgressBar
+                                percent={0}
+                                filledBackground="linear-gradient(to right, #fefb72, #f0bb31)"
+                              />
+                            }
+                            {updateStatus=== 'Complete'&&
+                                <ProgressBar
+                                percent={100}
+                                filledBackground="linear-gradient(to right, #fefb72, #f0bb31)"
+                              />
+                            }
                         </>
                 }
             </th>

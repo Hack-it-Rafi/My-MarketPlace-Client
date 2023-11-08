@@ -4,7 +4,7 @@ import useAxiosSecure from "./UseAxiosSecure";
 const MybidsTableRow = ({bid}) => {
     // console.log(bid);
     
-    const {_id, img, category, job_title, deadline, minimum_price, maximum_price, short_description, ownerEmail, status } = bid;
+    const {_id, img, job_title, deadline, ownerEmail, status } = bid;
 
     const [updateStatus, setUpdateStatus] = useState(status);
 
