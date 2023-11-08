@@ -11,7 +11,7 @@ const JobCard = ({ job }) => {
     }
 
     return (
-        <motion.div whileHover={{ scale: 1.1 }}
+        <motion.div whileHover={{ scale: 1.05 }}
         className="flex flex-wrap">          
             <div className="card w-full card-compact bg-base-100 shadow-xl">
                 <figure><img className="h-44 rounded-lg" src={img} alt="Shoes" /></figure>
